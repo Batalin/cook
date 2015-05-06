@@ -1,0 +1,26 @@
+doctype html
+html
+    head
+        title CookHub
+        link(rel="stylesheet", href="/vendor/bootstrap/dist/css/bootstrap.css")
+        link(rel="stylesheet", href="/vendor/toastr/toastr.css")
+        link(rel="stylesheet", href="/css/site.css")
+    body(ng-app='app')
+        .navbar.navbar-inverse.navbar-fixed-top
+            .container
+                .navbar-header
+                    a.navbar-brand(href="/") CookHub
+                .navbar-collapse.collapse
+                    ul.nav.navbar-nav(ng-controller="chNavBarLoginCtrl")
+                        li
+                            a(href="/") Home
+                        li
+                            a(href="/recipes") Recipes
+                        li(ng-show="identity.isAuthenticated()")
+                            a(href="/recipes/new") Add new recipe
+                    div(ng-include="'/partials/account/navbar-login'")
+        include currentUser
+        block main-content
+        footer.container.text-center
+            p &copy; 2015 OlegBa
+        include scripts

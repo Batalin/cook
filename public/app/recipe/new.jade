@@ -1,2 +1,46 @@
 .container
-    p test
+    h2 New Recipe creation
+    h4 1.
+    table
+        tr
+            td
+                p Enter the title for new Recipe:
+            td
+                input(ng-model="recipeTitle")
+        tr
+            td
+                p Enter the description:
+            td
+                input(ng-model="recipeDescription")
+    h4 2. Click on the dropdown list and choose the ingredients:
+    div.panel-group(id="accordion")
+        div.panel.panel-default(id="panel1")
+            div.panel-heading
+                h4.panel-title
+                    a(data-toggle="collapse" data-target="#collapseOne" href="#collapseOne") Click to choose Ingredients
+            div.panel-collapse.collapse.out(id="collapseOne")
+                div.panel-body.ingredientsContainer
+                    div.item(ng-repeat="item in food", ng-click="changeItemClass(item.title, $event)", id="{{item.title}}") {{item.title}}
+                        span.ingredientDescription {{item.description}}
+    h4 3. Now create the steps for the Recipe, take ingredients from the list on the left side and choose actions
+            div.row
+                div.col-md-12.action-container
+                    div.item(ng-repeat="item in actions", ng-click="chooseAction(item.title, $event)", id="{{item.title}}") {{item.title}}
+
+            div.row
+                div.col-md-3.panel-default
+                    div.panel-heading Ingredient list
+                    div.step-ing-container.panel-body
+                        div.item(ng-repeat="item in ingredients", ng-click="chooseIngredient(item.title, $event)", id="step{{item.title}}") {{item.title}}
+                            span.ingredientDescription {{item.description}}
+                div.col-md-8.panel-default
+                    div.panel-heading Steps
+                    div.step-ing-container.panel-body
+                    p(ng-repeat="item in steps") {{item.text}}
+            div.row
+                div.col-md-12
+                    button(ng-click="nextStep()") Add step
+                    button(ng-click="removeStep()") Remove step
+                    button(ng-click="save()") Save Recipe
+
+

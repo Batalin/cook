@@ -1,0 +1,16 @@
+.container
+    h1 {{recipe.title}}
+    h5 {{recipe.description}}
+    .row
+        .col-md-3
+            div
+                img()
+            ul
+                li(ng-repeat="item in recipe.ingredients") {{item.title}}
+
+        .col-md-9
+            .panel.panel-primary
+                .panel-heading Workflow steps
+                .panel-body
+                    ul
+                        li(ng-repeat="rec in recipe.steps") {{rec.text}}

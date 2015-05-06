@@ -1,5 +1,6 @@
-.panel.panel-primary
-    .panel-heading.text-center Recipes
+.panel.panel-primary(ng-controller="chRecipeCtrl")
+    .panel-heading.text-center Top Recipes
     .panel-body
-        .row(ng-repeat="course in courses | filter:{featured:true}")
-            .col-md-12 {{course.name}}
+        .row(ng-repeat="recipe in recipes")
+            .col-md-12
+                a(href="/recipes/{{recipe._id}}") {{recipe.title}}

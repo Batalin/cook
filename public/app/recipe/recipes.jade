@@ -1,0 +1,24 @@
+.container
+    .pull-right
+        form.form-inline
+            .form-group
+                input.form-control(ng-model="searchText", placeholder="Search")
+    div.panel-group(id="accordion")
+        div.panel.panel-default(id="panel1")
+            div.panel-heading
+                h4.panel-title
+                    a(data-toggle="collapse" data-target="#collapseOne" href="#collapseOne") Click to choose Ingredients
+                    button(ng-click="sort()") Search
+            div.panel-collapse.collapse.out(id="collapseOne")
+                div.panel-body.ingredientsContainer
+                    div.item(ng-repeat="item in food", ng-click="changeItemClass(item.title, $event)", id="{{item.title}}") {{item.title}}
+                        span.ingredientDescription {{item.description}}
+    table.table.table-hover.table-striped.table-condensed
+        tbody
+            tr(ng-repeat="recipe in recipes| filter:searchText")
+                td
+                    a(href="/recipes/{{recipe._id}}") {{recipe.title}}
+                td
+                    p {{recipe.description}}
+                td
+                    button(ng-click="take($event)" ng-show="identity.isAuthenticated()" id="{{recipe._id}}") take recipe

@@ -12,11 +12,43 @@ exports.createFood = function() {
         if(collection.length === 0) {
             foodItem.create({
                 title: 'Tomato',
-                description : ''
+                description : '1'
             });
             foodItem.create({
                 title: 'Potato',
-                description : ''
+                description : '2'
+            });
+            foodItem.create({
+                title: 'Fish',
+                description : '2'
+            });
+            foodItem.create({
+                title: 'Beef',
+                description : '2'
+            });
+            foodItem.create({
+                title: 'Salt',
+                description : '2'
+            });
+            foodItem.create({
+                title: 'Sugar',
+                description : '2'
+            });
+            foodItem.create({
+                title: 'Onion',
+                description : '2'
+            });
+            foodItem.create({
+                title: 'Salad',
+                description : '2'
+            });
+            foodItem.create({
+                title: 'Carrot',
+                description : '2'
+            });
+            foodItem.create({
+                title: 'Garlic',
+                description : '2'
             });
         }
     });
